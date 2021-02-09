@@ -101,6 +101,7 @@ function build-golang-app() {
         GOOS=windows GOARCH=386 go build -o build/$APPLICATION-$VERSION-windows-386.exe .
         GOOS=windows GOARCH=amd64 go build -o build/$APPLICATION-$VERSION-windows-amd64.exe .
         GOOS=windows GOARCH=arm go build -o build/$APPLICATION-$VERSION-windows-arm.exe .
+        # Get SHA-1 and put everything in a register.
         echo "$(find build/ -type f -print0 | xargs -0 sha1sum)" >>SHA-1
     else
         echo "Error: In your system, Go wasn't found."
