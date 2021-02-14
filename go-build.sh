@@ -42,6 +42,7 @@ installing-system-requirements
 function build-golang-app() {
     APPLICATION="AppName"
     VERSION="1.0.0"
+    # go tool dist list
     if [ -x "$(command -v go)" ]; then
         # Aix
         GOOS=aix GOARCH=ppc64 go build -o build/$APPLICATION-$VERSION-aix-ppc64 .
