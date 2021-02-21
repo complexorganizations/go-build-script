@@ -17,6 +17,8 @@ freebsd/amd64
 freebsd/arm
 freebsd/arm64
 illumos/amd64
+ios/amd64
+ios/arm64
 js/wasm
 linux/386
 linux/amd64
@@ -38,6 +40,7 @@ openbsd/386
 openbsd/amd64
 openbsd/arm
 openbsd/arm64
+openbsd/mips64
 plan9/386
 plan9/amd64
 plan9/arm
