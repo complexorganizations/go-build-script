@@ -1,6 +1,6 @@
 ### Go Build Script
 
-Build `.go` apps for all OS supported.
+Build `.go` apps for all supported OS.
 
 ---
 ### Features
