@@ -1,8 +1,10 @@
 ### Go Build Script
 
+Build `.go` apps for all OS supported.
 
 ---
 ### Features
+`go tool dist list`
 ```
 aix/ppc64
 android/386
