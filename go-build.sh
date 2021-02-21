@@ -65,6 +65,9 @@ function build-golang-app() {
         GOOS=illumos GOARCH=amd64 go build -o build/$APPLICATION-$VERSION-amd64 .
         # JS
         GOOS=js GOARCH=wasm go build -o build/$APPLICATION-$VERSION-js-wasm .
+        # iOS
+        GOOS=ios GOARCH=amd64 go build -o build/$APPLICATION-$VERSION-ios-amd64 .
+        GOOS=ios GOARCH=arm64 go build -o build/$APPLICATION-$VERSION-ios-arm64 .
         # Linux
         GOOS=linux GOARCH=386 go build -o build/$APPLICATION-$VERSION-linux-386 .
         GOOS=linux GOARCH=amd64 go build -o build/$APPLICATION-$VERSION-linux-amd64 .
@@ -92,6 +95,7 @@ function build-golang-app() {
         GOOS=openbsd GOARCH=amd64 go build -o build/$APPLICATION-$VERSION-openbsd-amd64 .
         GOOS=openbsd GOARCH=arm go build -o build/$APPLICATION-$VERSION-openbsd-arm .
         GOOS=openbsd GOARCH=arm64 go build -o build/$APPLICATION-$VERSION-openbsd-arm64 .
+        GOOS=openbsd GOARCH=mips64 go build -o build/$APPLICATION-$VERSION-openbsd-mips64 .
         # Plan9
         GOOS=plan9 GOARCH=386 go build -o build/$APPLICATION-$VERSION-plan9-386 .
         GOOS=plan9 GOARCH=amd64 go build -o build/$APPLICATION-$VERSION-plan9-amd64 .
