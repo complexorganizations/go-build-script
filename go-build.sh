@@ -18,15 +18,15 @@ function installing-system-requirements() {
     if { [ "${DISTRO}" == "ubuntu" ] || [ "${DISTRO}" == "debian" ] || [ "${DISTRO}" == "raspbian" ] || [ "${DISTRO}" == "pop" ] || [ "${DISTRO}" == "kali" ] || [ "${DISTRO}" == "linuxmint" ] || [ "${DISTRO}" == "fedora" ] || [ "${DISTRO}" == "centos" ] || [ "${DISTRO}" == "rhel" ] || [ "${DISTRO}" == "arch" ] || [ "${DISTRO}" == "manjaro" ] || [ "${DISTRO}" == "alpine" ] || [ "${DISTRO}" == "freebsd" ]; }; then
         if [ ! -x "$(command -v sha1sum)" ]; then
             if { [ "${DISTRO}" == "ubuntu" ] || [ "${DISTRO}" == "debian" ] || [ "${DISTRO}" == "raspbian" ] || [ "${DISTRO}" == "pop" ] || [ "${DISTRO}" == "kali" ] || [ "${DISTRO}" == "linuxmint" ]; }; then
-                sudo apt-get update && apt-get install coreutils -y
+                sudo apt-get update && sudo apt-get install coreutils -y
             elif { [ "${DISTRO}" == "fedora" ] || [ "${DISTRO}" == "centos" ] || [ "${DISTRO}" == "rhel" ]; }; then
-                sudo yum update -y && yum install coreutils -y
+                sudo yum update -y && sudo yum install coreutils -y
             elif { [ "${DISTRO}" == "arch" ] || [ "${DISTRO}" == "manjaro" ]; }; then
                 sudo pacman -Syu --noconfirm iptables coreutils
             elif [ "${DISTRO}" == "alpine" ]; then
-                sudo apk update && apk add coreutils
+                sudo apk update && sudo apk add coreutils
             elif [ "${DISTRO}" == "freebsd" ]; then
-                sudo pkg update && pkg install coreutils
+                sudo pkg update && sudo pkg install coreutils
             fi
         fi
     else
