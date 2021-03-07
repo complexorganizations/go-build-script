@@ -3,8 +3,15 @@
 Build `.go` apps for all supported OS.
 
 ---
+### Installation
+
+Lets first copy & mpdify `go-build.sh` to `{PROJECT}/scripts` execute `bash {PROJECT}/scripts/go-build.sh`
+
+---
 ### Features
+
 `go tool dist list`
+
 ```
 aix/ppc64
 android/386
