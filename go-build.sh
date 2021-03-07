@@ -16,17 +16,17 @@ dist-check
 # Pre-Checks system requirements
 function installing-system-requirements() {
     if { [ "${DISTRO}" == "ubuntu" ] || [ "${DISTRO}" == "debian" ] || [ "${DISTRO}" == "raspbian" ] || [ "${DISTRO}" == "pop" ] || [ "${DISTRO}" == "kali" ] || [ "${DISTRO}" == "linuxmint" ] || [ "${DISTRO}" == "fedora" ] || [ "${DISTRO}" == "centos" ] || [ "${DISTRO}" == "rhel" ] || [ "${DISTRO}" == "arch" ] || [ "${DISTRO}" == "manjaro" ] || [ "${DISTRO}" == "alpine" ] || [ "${DISTRO}" == "freebsd" ]; }; then
-        if [ ! -x "$(command -v sha1sum)" ]; then
+        if { [ ! -x "$(command -v sha1sum)" ] || [ ! -x "$(command -v go)" ]; }; then
             if { [ "${DISTRO}" == "ubuntu" ] || [ "${DISTRO}" == "debian" ] || [ "${DISTRO}" == "raspbian" ] || [ "${DISTRO}" == "pop" ] || [ "${DISTRO}" == "kali" ] || [ "${DISTRO}" == "linuxmint" ]; }; then
-                sudo apt-get update && sudo apt-get install coreutils -y
+                sudo apt-get update && sudo apt-get install coreutils golang-go -y
             elif { [ "${DISTRO}" == "fedora" ] || [ "${DISTRO}" == "centos" ] || [ "${DISTRO}" == "rhel" ]; }; then
-                sudo yum update -y && sudo yum install coreutils -y
+                sudo yum update -y && sudo yum install coreutils golang -y
             elif { [ "${DISTRO}" == "arch" ] || [ "${DISTRO}" == "manjaro" ]; }; then
-                sudo pacman -Syu --noconfirm iptables coreutils
+                sudo pacman -Syu --noconfirm iptables coreutils go
             elif [ "${DISTRO}" == "alpine" ]; then
-                sudo apk update && sudo apk add coreutils
+                sudo apk update && sudo apk add coreutils go
             elif [ "${DISTRO}" == "freebsd" ]; then
-                sudo pkg update && sudo pkg install coreutils
+                sudo pkg update && sudo pkg install coreutils go
             fi
         fi
     else
@@ -38,23 +38,11 @@ function installing-system-requirements() {
 # Run the function and check for requirements
 installing-system-requirements
 
-# See if there are .go files in the current directory
-function check-golang-files() {
-    if [ -z "$(ls ./*.go)" ]; then
-        echo "Error: Failed to find \".go\" files."
-        exit
-    fi
-}
-
-# Check for .go files in the current directory
-check-golang-files
-
 # Build for all the OS
 function build-golang-app() {
     APPLICATION="AppName"
     VERSION="1.0.0"
-    # go tool dist list
-    if [ -x "$(command -v go)" ]; then
+    if [ -n "$(ls ./*.go)" ]; then
         # Aix
         GOOS=aix GOARCH=ppc64 go build -o build/${APPLICATION}-${VERSION}-aix-ppc64 .
         # Android
@@ -120,7 +108,7 @@ function build-golang-app() {
         # Get SHA-1 and put everything in a register.
         find build/ -type f -print0 | xargs -0 sha1sum
     else
-        echo "Error: GO wasent found in your system."
+        echo "Error: Failed to find \".go\" files."
         exit
     fi
 }
