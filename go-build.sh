@@ -38,17 +38,6 @@ function installing-system-requirements() {
 # Run the function and check for requirements
 installing-system-requirements
 
-# See if there are .go files in the current directory
-function check-golang-files() {
-    if [ -z "$(ls ./*.go)" ]; then
-        echo "Error: Failed to find \".go\" files."
-        exit
-    fi
-}
-
-# Check for .go files in the current directory
-check-golang-files
-
 # Build for all the OS
 function build-golang-app() {
     APPLICATION="AppName"
