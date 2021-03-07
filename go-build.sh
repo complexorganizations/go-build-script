@@ -40,7 +40,7 @@ installing-system-requirements
 
 # See if there are .go files in the current directory
 function check-golang-files() {
-    if [ ! -n "$(ls *.go >/dev/null 2>&1)" ]; then
+    if [ -z "$(ls ./*.go)" ]; then
         echo "Error: Failed to find \".go\" files."
         exit
     fi
