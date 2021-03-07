@@ -44,69 +44,69 @@ function build-golang-app() {
     VERSION="1.0.0"
     if [ -n "$(ls ./*.go)" ]; then
         # Aix
-        GOOS=aix GOARCH=ppc64 go build -o build/${APPLICATION}-${VERSION}-aix-ppc64 .
+        GOOS=aix GOARCH=ppc64 go build -o bin/${APPLICATION}-${VERSION}-aix-ppc64 .
         # Android
-        GOOS=android GOARCH=386 go build -o build/${APPLICATION}-${VERSION}-android-386 .
-        GOOS=android GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-android-amd64 .
-        GOOS=android GOARCH=arm go build -o build/${APPLICATION}-${VERSION}-android-arm .
-        GOOS=android GOARCH=arm64 go build -o build/${APPLICATION}-${VERSION}-android-arm64 .
+        GOOS=android GOARCH=386 go build -o bin/${APPLICATION}-${VERSION}-android-386 .
+        GOOS=android GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-android-amd64 .
+        GOOS=android GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-android-arm .
+        GOOS=android GOARCH=arm64 go build -o bin/${APPLICATION}-${VERSION}-android-arm64 .
         # Darwin
-        GOOS=darwin GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-darwin-amd64 .
-        GOOS=darwin GOARCH=arm64 go build -o build/${APPLICATION}-${VERSION}-darwin-arm64 .
+        GOOS=darwin GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-darwin-amd64 .
+        GOOS=darwin GOARCH=arm64 go build -o bin/${APPLICATION}-${VERSION}-darwin-arm64 .
         # Dragonfly
-        GOOS=dragonfly GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-dragonfly-amd64 .
+        GOOS=dragonfly GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-dragonfly-amd64 .
         # Freebsd
-        GOOS=freebsd GOARCH=386 go build -o build/${APPLICATION}-${VERSION}-freebsd-386 .
-        GOOS=freebsd GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-freebsd-amd64 .
-        GOOS=freebsd GOARCH=arm go build -o build/${APPLICATION}-${VERSION}-freebsd-arm .
-        GOOS=freebsd GOARCH=arm64 go build -o build/${APPLICATION}-${VERSION}-freebsd-arm64 .
+        GOOS=freebsd GOARCH=386 go build -o bin/${APPLICATION}-${VERSION}-freebsd-386 .
+        GOOS=freebsd GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-freebsd-amd64 .
+        GOOS=freebsd GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-freebsd-arm .
+        GOOS=freebsd GOARCH=arm64 go build -o bin/${APPLICATION}-${VERSION}-freebsd-arm64 .
         # Lllumos
-        GOOS=illumos GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-amd64 .
+        GOOS=illumos GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-amd64 .
         # JS
-        GOOS=js GOARCH=wasm go build -o build/${APPLICATION}-${VERSION}-js-wasm .
+        GOOS=js GOARCH=wasm go build -o bin/${APPLICATION}-${VERSION}-js-wasm .
         # iOS
-        GOOS=ios GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-ios-amd64 .
-        GOOS=ios GOARCH=arm64 go build -o build/${APPLICATION}-${VERSION}-ios-arm64 .
+        GOOS=ios GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-ios-amd64 .
+        GOOS=ios GOARCH=arm64 go build -o bin/${APPLICATION}-${VERSION}-ios-arm64 .
         # Linux
-        GOOS=linux GOARCH=386 go build -o build/${APPLICATION}-${VERSION}-linux-386 .
-        GOOS=linux GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-linux-amd64 .
-        GOOS=linux GOARCH=arm go build -o build/${APPLICATION}-${VERSION}-linux-arm .
-        GOOS=linux GOARCH=arm64 go build -o build/${APPLICATION}-${VERSION}-linux-arm64 .
-        GOOS=linux GOARCH=mips go build -o build/${APPLICATION}-${VERSION}-linux-mips .
-        GOOS=linux GOARCH=mips64 go build -o build/${APPLICATION}-${VERSION}-linux-mips64 .
-        GOOS=linux GOARCH=mips64le go build -o build/${APPLICATION}-${VERSION}-linux-mips64le .
-        GOOS=linux GOARCH=mipsle go build -o build/${APPLICATION}-${VERSION}-linux-mipsle .
-        GOOS=linux GOARCH=ppc64 go build -o build/${APPLICATION}-${VERSION}-linux-ppc64 .
-        GOOS=linux GOARCH=ppc64le go build -o build/${APPLICATION}-${VERSION}-linux-ppc64le .
-        GOOS=linux GOARCH=riscv64 go build -o build/${APPLICATION}-${VERSION}-linux-riscv64 .
-        GOOS=linux GOARCH=s390x go build -o build/${APPLICATION}-${VERSION}-linux-s390x .
+        GOOS=linux GOARCH=386 go build -o bin/${APPLICATION}-${VERSION}-linux-386 .
+        GOOS=linux GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-linux-amd64 .
+        GOOS=linux GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-linux-arm .
+        GOOS=linux GOARCH=arm64 go build -o bin/${APPLICATION}-${VERSION}-linux-arm64 .
+        GOOS=linux GOARCH=mips go build -o bin/${APPLICATION}-${VERSION}-linux-mips .
+        GOOS=linux GOARCH=mips64 go build -o bin/${APPLICATION}-${VERSION}-linux-mips64 .
+        GOOS=linux GOARCH=mips64le go build -o bin/${APPLICATION}-${VERSION}-linux-mips64le .
+        GOOS=linux GOARCH=mipsle go build -o bin/${APPLICATION}-${VERSION}-linux-mipsle .
+        GOOS=linux GOARCH=ppc64 go build -o bin/${APPLICATION}-${VERSION}-linux-ppc64 .
+        GOOS=linux GOARCH=ppc64le go build -o bin/${APPLICATION}-${VERSION}-linux-ppc64le .
+        GOOS=linux GOARCH=riscv64 go build -o bin/${APPLICATION}-${VERSION}-linux-riscv64 .
+        GOOS=linux GOARCH=s390x go build -o bin/${APPLICATION}-${VERSION}-linux-s390x .
         # Nacl
-        GOOS=nacl GOARCH=386 go build -o build/${APPLICATION}-${VERSION}-nacl-386 .
-        GOOS=nacl GOARCH=amd64p32 go build -o build/${APPLICATION}-${VERSION}-nacl-amd64p32 .
-        GOOS=nacl GOARCH=nacl-arm go build -o build/${APPLICATION}-${VERSION}-nacl-arm .
+        GOOS=nacl GOARCH=386 go build -o bin/${APPLICATION}-${VERSION}-nacl-386 .
+        GOOS=nacl GOARCH=amd64p32 go build -o bin/${APPLICATION}-${VERSION}-nacl-amd64p32 .
+        GOOS=nacl GOARCH=nacl-arm go build -o bin/${APPLICATION}-${VERSION}-nacl-arm .
         # Netbsd
-        GOOS=netbsd GOARCH=386 go build -o build/${APPLICATION}-${VERSION}-netbsd-386 .
-        GOOS=netbsd GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-netbsd-amd64 .
-        GOOS=netbsd GOARCH=arm go build -o build/${APPLICATION}-${VERSION}-netbsd-arm .
-        GOOS=netbsd GOARCH=arm64 go build -o build/${APPLICATION}-${VERSION}-netbsd-arm64 .
+        GOOS=netbsd GOARCH=386 go build -o bin/${APPLICATION}-${VERSION}-netbsd-386 .
+        GOOS=netbsd GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-netbsd-amd64 .
+        GOOS=netbsd GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-netbsd-arm .
+        GOOS=netbsd GOARCH=arm64 go build -o bin/${APPLICATION}-${VERSION}-netbsd-arm64 .
         # Openbsd
-        GOOS=openbsd GOARCH=386 go build -o build/${APPLICATION}-${VERSION}-openbsd-386 .
-        GOOS=openbsd GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-openbsd-amd64 .
-        GOOS=openbsd GOARCH=arm go build -o build/${APPLICATION}-${VERSION}-openbsd-arm .
-        GOOS=openbsd GOARCH=arm64 go build -o build/${APPLICATION}-${VERSION}-openbsd-arm64 .
-        GOOS=openbsd GOARCH=mips64 go build -o build/${APPLICATION}-${VERSION}-openbsd-mips64 .
+        GOOS=openbsd GOARCH=386 go build -o bin/${APPLICATION}-${VERSION}-openbsd-386 .
+        GOOS=openbsd GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-openbsd-amd64 .
+        GOOS=openbsd GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-openbsd-arm .
+        GOOS=openbsd GOARCH=arm64 go build -o bin/${APPLICATION}-${VERSION}-openbsd-arm64 .
+        GOOS=openbsd GOARCH=mips64 go build -o bin/${APPLICATION}-${VERSION}-openbsd-mips64 .
         # Plan9
-        GOOS=plan9 GOARCH=386 go build -o build/${APPLICATION}-${VERSION}-plan9-386 .
-        GOOS=plan9 GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-plan9-amd64 .
-        GOOS=plan9 GOARCH=arm go build -o build/${APPLICATION}-${VERSION}-plan9-arm .
+        GOOS=plan9 GOARCH=386 go build -o bin/${APPLICATION}-${VERSION}-plan9-386 .
+        GOOS=plan9 GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-plan9-amd64 .
+        GOOS=plan9 GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-plan9-arm .
         # Solaris
-        GOOS=solaris GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-solaris-amd64 .
+        GOOS=solaris GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-solaris-amd64 .
         # Windows
-        GOOS=windows GOARCH=386 go build -o build/${APPLICATION}-${VERSION}-windows-386.exe .
-        GOOS=windows GOARCH=amd64 go build -o build/${APPLICATION}-${VERSION}-windows-amd64.exe .
-        GOOS=windows GOARCH=arm go build -o build/${APPLICATION}-${VERSION}-windows-arm.exe .
+        GOOS=windows GOARCH=386 go build -o bin/${APPLICATION}-${VERSION}-windows-386.exe .
+        GOOS=windows GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-windows-amd64.exe .
+        GOOS=windows GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-windows-arm.exe .
         # Get SHA-1 and put everything in a register.
-        find build/ -type f -print0 | xargs -0 sha1sum
+        find bin/ -type f -print0 | xargs -0 sha1sum
     else
         echo "Error: Failed to find \".go\" files."
         exit
@@ -114,4 +114,4 @@ function build-golang-app() {
 }
 
 # Start the build
-build-golang-app
+build-golang-ap
