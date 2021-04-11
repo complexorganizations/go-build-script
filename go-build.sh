@@ -105,8 +105,11 @@ function build-golang-app() {
         GOOS=windows GOARCH=386 go build -o bin/${APPLICATION}-${VERSION}-windows-386.exe .
         GOOS=windows GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-windows-amd64.exe .
         GOOS=windows GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-windows-arm.exe .
-        # Get SHA-1 and put everything in a register.
-        find bin/ -type f -print0 | xargs -0 sha1sum
+        # Get SHA and put everything in a register.
+        echo "SHA-256"
+        find bin/ -type f -print0 | xargs -0 sha256sum
+        echo "SHA-512"
+        find bin/ -type f -print0 | xargs -0 sha512sum
     else
         echo "Error: Failed to find \".go\" files."
         exit
