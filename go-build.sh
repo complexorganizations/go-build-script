@@ -22,7 +22,7 @@ function installing-system-requirements() {
             elif { [ "${DISTRO}" == "fedora" ] || [ "${DISTRO}" == "centos" ] || [ "${DISTRO}" == "rhel" ]; }; then
                 sudo yum update -y && sudo yum install coreutils golang -y
             elif { [ "${DISTRO}" == "arch" ] || [ "${DISTRO}" == "manjaro" ]; }; then
-                sudo pacman -Syu --noconfirm iptables coreutils go
+                sudo pacman -Syu --noconfirm --needed coreutils go
             elif [ "${DISTRO}" == "alpine" ]; then
                 sudo apk update && sudo apk add coreutils go
             elif [ "${DISTRO}" == "freebsd" ]; then
