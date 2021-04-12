@@ -5,7 +5,7 @@ Build `.go` apps for all supported OS.
 ---
 ### Installation
 
-Lets first copy & modify `go-build.sh` to `{PROJECT}/scripts` execute `bash {PROJECT}/scripts/go-build.sh`
+Lets first copy & modify `go-build.sh` to `{PROJECT}/scripts` execute `bash {PROJECT}/scripts/go-build-script.sh`
 
 ---
 ### Features
