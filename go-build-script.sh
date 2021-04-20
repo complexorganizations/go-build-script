@@ -41,7 +41,7 @@ installing-system-requirements
 # Build for all the OS
 function build-golang-app() {
     APPLICATION="AppName"
-    VERSION="1.0.0"
+    VERSION="v1.0.0"
     if [ -n "$(ls ./*.go)" ]; then
         # Aix
         GOOS=aix GOARCH=ppc64 go build -o bin/${APPLICATION}-${VERSION}-aix-ppc64 .
