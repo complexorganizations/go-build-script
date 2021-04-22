@@ -83,7 +83,7 @@ function build-golang-app() {
         GOOS=windows GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-windows-amd64.exe .
         GOOS=windows GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-windows-arm.exe .
         # Get SHA and put everything in a register.
-        checksum "$PWD"
+        checksum "$PWD/bin"
     else
         echo "Error: Failed to find \".go\" files."
         exit
