@@ -5,6 +5,7 @@ Build `.go` apps for all supported platforms.
 ### Requirements
 - [Go](https://go.dev)
 - [Checksum](https://github.com/complexorganizations/checksum)
+- [list-files](https://github.com/complexorganizations/list-files)
 
 ---
 ### Installation
