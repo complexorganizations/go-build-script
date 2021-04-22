@@ -9,6 +9,9 @@ function installing-system-requirements() {
     elif [ ! -x "$(command -v go)" ]; then
         echo "The application go was not found in the system. [ https://go.dev ]"
         exit
+    elif [ ! -x "$(command -v list-files)" ]; then
+        echo "The application list-files was not found in the system. [ https://github.com/complexorganizations/list-files ]"
+        exit
     fi
 }
 
@@ -19,7 +22,7 @@ installing-system-requirements
 function build-golang-app() {
     APPLICATION="AppName"
     VERSION="v1.0.0"
-    if [ -n "$(ls ./*.go)" ]; then
+    if [ -n "$(list-files -extension=.go)" ]; then
         # Aix
         GOOS=aix GOARCH=ppc64 go build -o bin/${APPLICATION}-${VERSION}-aix-ppc64 .
         # Android
