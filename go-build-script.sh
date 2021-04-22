@@ -85,7 +85,7 @@ function build-golang-app() {
         # Get SHA and put everything in a register.
         checksum "$PWD/bin"
     else
-        echo "Error: Failed to find \".go\" files."
+        echo "Error: The \".go\" files could not be found."
         exit
     fi
 }
