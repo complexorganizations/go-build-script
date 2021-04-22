@@ -5,8 +5,10 @@
 function installing-system-requirements() {
     if [ ! -x "$(command -v checksum)" ]; then
         echo "The application checksum was not found in the system. [ https://github.com/complexorganizations/checksum ]"
+        exit
     elif [ ! -x "$(command -v go)" ]; then
         echo "The application go was not found in the system. [ https://go.dev ]"
+        exit
     fi
 }
 
@@ -81,7 +83,7 @@ function build-golang-app() {
         GOOS=windows GOARCH=amd64 go build -o bin/${APPLICATION}-${VERSION}-windows-amd64.exe .
         GOOS=windows GOARCH=arm go build -o bin/${APPLICATION}-${VERSION}-windows-arm.exe .
         # Get SHA and put everything in a register.
-        find bin/ -type f -print0 | xargs -0 sha512sum
+        checksum "$PWD"
     else
         echo "Error: Failed to find \".go\" files."
         exit
