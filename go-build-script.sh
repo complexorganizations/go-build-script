@@ -1,37 +1,12 @@
 #!/bin/bash
 # https://github.com/complexorganizations/go-build-script
 
-# Detect Operating System
-function dist-check() {
-    if [ -e /etc/os-release ]; then
-        # shellcheck disable=SC1091
-        source /etc/os-release
-        DISTRO=${ID}
-    fi
-}
-
-# Check Operating System
-dist-check
-
 # Pre-Checks system requirements
 function installing-system-requirements() {
-    if { [ "${DISTRO}" == "ubuntu" ] || [ "${DISTRO}" == "debian" ] || [ "${DISTRO}" == "raspbian" ] || [ "${DISTRO}" == "pop" ] || [ "${DISTRO}" == "kali" ] || [ "${DISTRO}" == "linuxmint" ] || [ "${DISTRO}" == "fedora" ] || [ "${DISTRO}" == "centos" ] || [ "${DISTRO}" == "rhel" ] || [ "${DISTRO}" == "arch" ] || [ "${DISTRO}" == "manjaro" ] || [ "${DISTRO}" == "alpine" ] || [ "${DISTRO}" == "freebsd" ]; }; then
-        if { [ ! -x "$(command -v sha512sum)" ] || [ ! -x "$(command -v go)" ]; }; then
-            if { [ "${DISTRO}" == "ubuntu" ] || [ "${DISTRO}" == "debian" ] || [ "${DISTRO}" == "raspbian" ] || [ "${DISTRO}" == "pop" ] || [ "${DISTRO}" == "kali" ] || [ "${DISTRO}" == "linuxmint" ]; }; then
-                sudo apt-get update && sudo apt-get install coreutils golang-go -y
-            elif { [ "${DISTRO}" == "fedora" ] || [ "${DISTRO}" == "centos" ] || [ "${DISTRO}" == "rhel" ]; }; then
-                sudo yum update -y && sudo yum install coreutils golang -y
-            elif { [ "${DISTRO}" == "arch" ] || [ "${DISTRO}" == "manjaro" ]; }; then
-                sudo pacman -Syu --noconfirm --needed coreutils go
-            elif [ "${DISTRO}" == "alpine" ]; then
-                sudo apk update && sudo apk add coreutils go
-            elif [ "${DISTRO}" == "freebsd" ]; then
-                sudo pkg update && sudo pkg install coreutils go
-            fi
-        fi
-    else
-        echo "Error: ${DISTRO} not supported."
-        exit
+    if [ ! -x "$(command -v checksum)" ]; then
+        echo "The application checksum was not found in the system. [ https://github.com/complexorganizations/checksum ]"
+    elif [ ! -x "$(command -v go)" ]; then
+        echo "The application go was not found in the system. [ https://go.dev ]"
     fi
 }
 
@@ -114,4 +89,4 @@ function build-golang-app() {
 }
 
 # Start the build
-build-golang-ap
+build-golang-app
