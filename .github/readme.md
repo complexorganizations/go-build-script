@@ -7,7 +7,14 @@ Build `.go` apps for all supported platforms.
 
 ---
 ### Installation
-Lets first copy & modify `go-build-script.go` to `{PROJECT}/scripts` execute `go run {PROJECT}/scripts/go-build-script.go`
+Install the binary to the system.
+```
+go get -v github.com/complexorganizations/go-build-script
+```
+Lets generate the code
+```
+go-build-script -name=ProjectName -version=v1.0.0 -code=/user/example/folder -bin=/user/example/folder/bin/
+```
 
 ---
 ### Features
