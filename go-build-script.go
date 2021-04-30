@@ -38,10 +38,10 @@ func main() {
 }
 
 func buildGoApps() {
-	// get env var from system and go that route
+	// aix/ppc64
 	os.Setenv("GOOS", "aix")
 	os.Setenv("GOARCH", "ppc64")
-	cmd := exec.Command("go", "build", "-o", "bin/"+applicationName+"-"+versionNumber+"-aix-ppc64", codePath)
+	cmd := exec.Command("go", "build", "-o", "bin/"+applicationName+"-"+versionNumber+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
 	err = cmd.Run()
 	handleErrors(err)
 }
