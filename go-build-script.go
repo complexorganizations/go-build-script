@@ -40,6 +40,7 @@ func init() {
 }
 
 func main() {
+	// Make a list of all the env var and than use a single statment and remove all these copy of the statment
 	buildGoApps()
 }
 
