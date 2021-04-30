@@ -18,7 +18,7 @@ func init() {
 		log.Fatal("The application gos was not found in the system.")
 	}
 	if len(os.Args) > 1 {
-		tempApplicationName := flag.String("app", "Example", "The name of your app.")
+		tempApplicationName := flag.String("name", "Example", "The name of your app.")
 		tempVersionNumber := flag.String("version", "v1.0.0", "The version of your app.")
 		flag.Parse()
 		applicationName = *tempApplicationName
@@ -33,7 +33,7 @@ func main() {
 }
 
 func buildGoApps() {
-	cmd := exec.Command("GOOS=aix", "go build", "-o", "bin/"+applicationName+"-"+versionNumber, "-aix-ppc64", ".")
+	cmd := exec.Command("GOOS=aix", "go build", "-o", "bin/" + applicationName + "-" + versionNumber, "-aix-ppc64", ".")
 	err = cmd.Run()
 	handleErrors(err)
 }
