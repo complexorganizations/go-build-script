@@ -1,11 +1,14 @@
 package main
 
 import (
+	"crypto/sha512"
 	"flag"
-	//"fmt"
+	"fmt"
+	"io"
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
 )
 
 var (
@@ -51,6 +54,27 @@ func buildGoApps() {
 	cmd := exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
 	err = cmd.Run()
 	handleErrors(err)
+	/* Get SHA512 and put everything in a register. */
+	getSHA512Hash()
+}
+
+func getSHA512Hash() {
+	if folderExists(binPath) {
+		filepath.Walk(binPath, func(path string, info os.FileInfo, err error) error {
+			if fileExists(path) {
+				file, err := os.Open(path)
+				handleErrors(err)
+				defer file.Close()
+				hash := sha512.New()
+				io.Copy(hash, file)
+				handleErrors(err)
+				directory, fileName := filepath.Split(path)
+				_ = directory
+				fmt.Printf("%s %x \n", fileName, hash.Sum(nil))
+			}
+			return nil
+		})
+	}
 }
 
 // Application Check
@@ -61,6 +85,24 @@ func commandExists(cmd string) bool {
 	}
 	_ = appName
 	return true
+}
+
+// Folder exists
+func folderExists(foldername string) bool {
+	info, err := os.Stat(foldername)
+	if os.IsNotExist(err) {
+		return false
+	}
+	return info.IsDir()
+}
+
+// File exists
+func fileExists(filename string) bool {
+	info, err := os.Stat(filename)
+	if os.IsNotExist(err) {
+		return false
+	}
+	return !info.IsDir()
 }
 
 // Handle errors
