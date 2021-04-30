@@ -38,27 +38,9 @@ func main() {
 }
 
 func buildGoApps() {
-	cmd := exec.Command("GOOS=aix", "go build", "-o", "bin/"+applicationName+"-"+versionNumber, "-aix-ppc64", codePath)
+	cmd := exec.Command("GOOS=aix GOARCH=ppc64 go build -o bin/"+applicationName+"-"+versionNumber+"-aix-ppc64", codePath)
 	err = cmd.Run()
 	handleErrors(err)
-}
-
-// Directory Check
-func folderExists(foldername string) bool {
-	info, err := os.Stat(foldername)
-	if os.IsNotExist(err) {
-		return false
-	}
-	return info.IsDir()
-}
-
-// File Check
-func fileExists(filename string) bool {
-	info, err := os.Stat(filename)
-	if os.IsNotExist(err) {
-		return false
-	}
-	return !info.IsDir()
 }
 
 // Application Check
