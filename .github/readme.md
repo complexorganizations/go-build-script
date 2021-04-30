@@ -4,11 +4,10 @@ Build `.go` apps for all supported platforms.
 ---
 ### Requirements
 - [Go](https://go.dev)
-- [Checksum](https://github.com/complexorganizations/checksum)
 
 ---
 ### Installation
-Lets first copy & modify `go-build.sh` to `{PROJECT}/scripts` execute `bash {PROJECT}/scripts/go-build-script.sh`
+Lets first copy & modify `go-build-script.go` to `{PROJECT}/scripts` execute `go run {PROJECT}/scripts/go-build-script.go`
 
 ---
 ### Features
