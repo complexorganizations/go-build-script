@@ -28,15 +28,16 @@ func init() {
 		tempApplicationName := flag.String("name", "Example", "The name of your app.")
 		tempVersionNumber := flag.String("version", "v1.0.0", "The version of your app.")
 		tempCodePath := flag.String("code", "/user/example/folder", "The location of your code.")
-		tempBuildPath := flag.String("bin", "/user/example/folder/bin/", "The location of your code.")
+		tempBinPath := flag.String("bin", "/user/example/folder/bin/", "The location of your bin folder.")
 		flag.Parse()
 		applicationName = *tempApplicationName
 		versionNumber = *tempVersionNumber
 		codePath = *tempCodePath
-		binPath = *tempBuildPath
+		binPath = *tempBinPath
 	} else {
 		log.Fatal("Error: The system path has not been given.")
 	}
+	// Make sure everything is provided
 	if applicationName == "" || versionNumber == "" || codePath == "" || binPath == "" {
 		log.Fatal("Error: Required arguments were not given")
 	}
