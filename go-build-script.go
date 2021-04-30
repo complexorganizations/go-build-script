@@ -38,7 +38,7 @@ func main() {
 }
 
 func buildGoApps() {
-	cmd := exec.Command("GOOS=aix GOARCH=ppc64 go build -o bin/"+applicationName+"-"+versionNumber+"-aix-ppc64", codePath)
+	cmd := exec.Command("go", "build", "-o", "bin/"+applicationName+"-"+versionNumber+"-aix-ppc64", codePath)
 	err = cmd.Run()
 	handleErrors(err)
 }
