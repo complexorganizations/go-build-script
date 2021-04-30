@@ -308,13 +308,13 @@ func buildGoApps() {
 	cmd = exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
 	err = cmd.Run()
 	handleErrors(err)
-	// plan9/386
+	// plan9/amd64
 	os.Setenv("GOOS", "plan9")
 	os.Setenv("GOARCH", "amd64")
 	cmd = exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
 	err = cmd.Run()
 	handleErrors(err)
-	// plan9/386
+	// plan9/arm
 	os.Setenv("GOOS", "plan9")
 	os.Setenv("GOARCH", "arm")
 	cmd = exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
