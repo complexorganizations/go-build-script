@@ -1,6 +1,7 @@
 ### Go Build Script
 Build `.go` apps for all supported platforms.
 
+#### Currently, it only operates on Unix and does not operate on DOS.
 ---
 ### Requirements
 - [Go](https://go.dev)
