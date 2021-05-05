@@ -38,7 +38,7 @@ func init() {
 		log.Fatal("Error: The system path has not been given.")
 	}
 	// Make sure everything is provided
-	if applicationName == "" || versionNumber == "" || codePath == "" || binPath == "" {
+	if len(applicationName) < 1 || len(versionNumber) < 1 || len(codePath) < 1 || len(binPath) < 1 {
 		log.Fatal("Error: Required arguments were not given")
 	}
 }
