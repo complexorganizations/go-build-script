@@ -49,7 +49,12 @@ func main() {
 
 func buildGoApps() {
 	// Put everything into an array and than pull the data from there and start buiding
-	
+	var goOS = []string {
+		//
+	}
+	var goArch = []string {
+		//
+	}
 	/* Start the build */
 	os.Setenv("GOOS", "aix")
 	os.Setenv("GOARCH", "ppc64")
