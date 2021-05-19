@@ -49,10 +49,53 @@ func main() {
 
 func buildGoApps() {
 	// Put everything into an array and than pull the data from there and start buiding
-	var goOS = []string {
-		//
+	var goOS = []string{
+		"aix",
+		"android",
+		"android",
+		"android",
+		"android",
+		"darwin",
+		"darwin",
+		"dragonfly",
+		"freebsd",
+		"freebsd",
+		"freebsd",
+		"freebsd",
+		"illumos",
+		"ios",
+		"ios",
+		"js",
+		"linux",
+		"linux",
+		"linux",
+		"linux",
+		"linux",
+		"linux",
+		"linux",
+		"linux",
+		"linux",
+		"linux",
+		"linux",
+		"linux",
+		"netbsd",
+		"netbsd",
+		"netbsd",
+		"netbsd",
+		"openbsd",
+		"openbsd",
+		"openbsd",
+		"openbsd",
+		"openbsd",
+		"plan9",
+		"plan9",
+		"plan9",
+		"solaris",
+		"windows",
+		"windows",
+		"windows",
 	}
-	var goArch = []string {
+	var goArch = []string{
 		//
 	}
 	/* Start the build */
