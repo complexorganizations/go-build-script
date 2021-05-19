@@ -95,6 +95,8 @@ func buildGoApps() {
 		"windows/amd64",
 		"windows/arm",
 	}
+	// Split the array and than start the build.
+	// https://golang.org/pkg/strings/#Split
 	/* Start the build */
 	os.Setenv("GOOS", "aix")
 	os.Setenv("GOARCH", "ppc64")
