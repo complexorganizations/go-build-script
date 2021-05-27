@@ -39,7 +39,7 @@ func init() {
 		log.Fatal("Error: The system path has not been given.")
 	}
 	// Make sure everything is provided
-	if applicationName == "" || versionNumber == "" || codePath == "" || binPath == "" {
+	if len(applicationName) < 1 || len(versionNumber) < 1 || len(codePath) < 1 || len(binPath) < 1 {
 		log.Fatal("Error: Required arguments were not given")
 	}
 }
@@ -50,7 +50,7 @@ func main() {
 
 func buildGoApps() {
 	// Put everything into an array and than pull the data from there and start buiding
-	var distList = []string{
+	distList := []string{
 		"aix/ppc64",
 		"android/386",
 		"android/amd64",
