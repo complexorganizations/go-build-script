@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 )
 
 var (
@@ -98,6 +99,8 @@ func buildGoApps() {
 	// Split the array and than start the build.
 	// https://golang.org/pkg/strings/#Split
 	/* Start the build */
+	justString := fmt.Sprint(distList)
+	fmt.Printf("%q\n", strings.Split(justString, "/"))
 	os.Setenv("GOOS", "aix")
 	os.Setenv("GOARCH", "ppc64")
 	cmd := exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+"-"+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
