@@ -22,9 +22,8 @@ var (
 
 func init() {
 	// Make sure we have go installed in the system.
-	if !commandExists("go") {
-		log.Fatal("The application go was not found in the system.")
-	}
+	commandExists("go")
+	// Flags
 	if len(os.Args) > 1 {
 		tempApplicationName := flag.String("name", "Example", "The name of your app.")
 		tempVersionNumber := flag.String("version", "v1.0.0", "The version of your app.")
@@ -129,13 +128,11 @@ func getSHA512Hash() {
 }
 
 // Application Check
-func commandExists(cmd string) bool {
-	appName, err := exec.LookPath(cmd)
+func commandExists(cmd string) {
+	cmd, err := exec.LookPath(cmd)
 	if err != nil {
-		return false
+		log.Fatalf("Error: The application %s was not found in the system.\n", cmd)
 	}
-	_ = appName
-	return true
 }
 
 // Folder exists
