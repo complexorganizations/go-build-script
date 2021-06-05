@@ -22,10 +22,6 @@ var (
 )
 
 func init() {
-	/* Temp don't build if its windows */
-	if runtime.GOOS == "windows" {
-		os.Exit(0)
-	}
 	// Make sure we have go installed in the system.
 	commandExists("go")
 	// Flags
@@ -104,8 +100,19 @@ func buildGoApps() {
 	for i := 0; i < len(distList); i++ {
 		completeDistList := distList[i]
 		splitDistList := strings.Split(completeDistList, "/")
-		os.Setenv("GOOS", splitDistList[0])
-		os.Setenv("GOARCH", splitDistList[1])
+		// Determine how to construct based on the operating system.
+		switch runtime.GOOS {
+		case "darwin", "linux":
+			os.Setenv("GOOS", splitDistList[0])
+			os.Setenv("GOARCH", splitDistList[1])
+		case "windows":
+			cmd := exec.Command("$env"+":"+"GOOS", "=", splitDistList[0])
+			err = cmd.Run()
+			handleErrors(err)
+			cmd = exec.Command("$env"+":"+"GOARCH", "=", splitDistList[1])
+			err = cmd.Run()
+			handleErrors(err)
+		}
 		cmd := exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+"-"+splitDistList[0]+"-"+splitDistList[1], codePath)
 		err = cmd.Run()
 		handleErrors(err)
