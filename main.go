@@ -9,7 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	//"strings"
+	"strings"
 )
 
 var (
@@ -97,8 +97,10 @@ func buildGoApps() {
 	}
 	/* Start the build */
 	for i := 0; i <= len(distList); i++ {
-		os.Setenv("GOOS", "aix")
-		os.Setenv("GOARCH", "ppc64")
+		completeDistList := distList[i]
+		splitDistList := strings.Split(completeDistList, "/")
+		os.Setenv("GOOS", splitDistList[0])
+		os.Setenv("GOARCH", splitDistList[1])
 		cmd := exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+"-"+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
 		err = cmd.Run()
 		handleErrors(err)
