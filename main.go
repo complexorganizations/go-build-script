@@ -101,7 +101,7 @@ func buildGoApps() {
 		splitDistList := strings.Split(completeDistList, "/")
 		os.Setenv("GOOS", splitDistList[0])
 		os.Setenv("GOARCH", splitDistList[1])
-		cmd := exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+"-"+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
+		cmd := exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+"-"+splitDistList[0]+"-"+splitDistList[1], codePath)
 		err = cmd.Run()
 		handleErrors(err)
 	}
