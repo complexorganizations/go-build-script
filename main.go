@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 )
 
@@ -21,6 +22,10 @@ var (
 )
 
 func init() {
+	/* Temp don't build if its windows */
+	if runtime.GOOS == "windows" {
+		os.Exit(0)
+	}
 	// Make sure we have go installed in the system.
 	commandExists("go")
 	// Flags
