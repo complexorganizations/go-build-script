@@ -9,7 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"strings"
+	//"strings"
 )
 
 var (
@@ -95,15 +95,14 @@ func buildGoApps() {
 		"windows/amd64",
 		"windows/arm",
 	}
-	// Split the array and than start the build.
-	// https://golang.org/pkg/strings/#Split
 	/* Start the build */
-	fmt.Println(strings.Split(strings.Join(distList, " "), "/"))
-	os.Setenv("GOOS", "aix")
-	os.Setenv("GOARCH", "ppc64")
-	cmd := exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+"-"+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
-	err = cmd.Run()
-	handleErrors(err)
+	for i := 0; i <= len(distList); i++ {
+		os.Setenv("GOOS", "aix")
+		os.Setenv("GOARCH", "ppc64")
+		cmd := exec.Command("go", "build", "-o", binPath+applicationName+"-"+versionNumber+"-"+os.Getenv("GOOS")+"-"+os.Getenv("GOARCH"), codePath)
+		err = cmd.Run()
+		handleErrors(err)
+	}
 	/* Get SHA512 and put everything in a register. */
 	getSHA512Hash()
 }
