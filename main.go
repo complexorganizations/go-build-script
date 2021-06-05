@@ -96,7 +96,7 @@ func buildGoApps() {
 		"windows/arm",
 	}
 	/* Start the build */
-	for i := 0; i <= len(distList); i++ {
+	for i := 0; i < len(distList); i++ {
 		completeDistList := distList[i]
 		splitDistList := strings.Split(completeDistList, "/")
 		os.Setenv("GOOS", splitDistList[0])
