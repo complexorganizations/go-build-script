@@ -100,11 +100,15 @@ func buildGoApps() {
 	for i := 0; i < len(distList); i++ {
 		completeDistList := distList[i]
 		splitDistList := strings.Split(completeDistList, "/")
+		// Delete all environment variables
+		os.Clearenv()
 		// Determine how to construct based on the operating system.
 		switch runtime.GOOS {
 		case "darwin", "linux":
-			os.Setenv("GOOS", splitDistList[0])
-			os.Setenv("GOARCH", splitDistList[1])
+			err = os.Setenv("GOOS", splitDistList[0])
+			handleErrors(err)
+			err = os.Setenv("GOARCH", splitDistList[1])
+			handleErrors(err)
 		case "windows":
 			cmd := exec.Command("$env"+":"+"GOOS", "=", splitDistList[0])
 			err = cmd.Run()
