@@ -22,6 +22,8 @@ var (
 )
 
 func init() {
+	// Make sure we have go installed in the system.
+	commandExists("go")
 	// Flags
 	if len(os.Args) > 1 {
 		tempApplicationName := flag.String("name", "Example", "The name of your app.")
@@ -139,6 +141,14 @@ func getSHA512Hash() {
 			}
 			return nil
 		})
+	}
+}
+
+// Application Check
+func commandExists(cmd string) {
+	cmd, err := exec.LookPath(cmd)
+	if err != nil {
+		log.Fatalf("Error: The application %s was not found in the system.\n", cmd)
 	}
 }
 
