@@ -98,8 +98,7 @@ func buildGoApps() {
 	}
 	/* Start the build */
 	for i := 0; i < len(distList); i++ {
-		completeDistList := distList[i]
-		splitDistList := strings.Split(completeDistList, "/")
+		splitDistList := strings.Split(distList[i], "/")
 		// Delete all environment variables
 		os.Clearenv()
 		// Determine how to construct based on the operating system.
