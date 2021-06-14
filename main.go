@@ -154,7 +154,7 @@ func commandExists(cmd string) {
 // Folder exists
 func folderExists(foldername string) bool {
 	info, err := os.Stat(foldername)
-	if os.IsNotExist(err) {
+	if err != nil {
 		return false
 	}
 	return info.IsDir()
@@ -163,7 +163,7 @@ func folderExists(foldername string) bool {
 // File exists
 func fileExists(filename string) bool {
 	info, err := os.Stat(filename)
-	if os.IsNotExist(err) {
+	if err != nil {
 		return false
 	}
 	return !info.IsDir()
