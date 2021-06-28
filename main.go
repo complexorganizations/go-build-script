@@ -42,6 +42,10 @@ func init() {
 	if len(applicationName) < 1 || len(versionNumber) < 1 || len(codePath) < 1 || len(binPath) < 1 {
 		log.Fatal("Error: Required arguments were not given")
 	}
+	// Make sure we're using the right version of the runtime.
+	if runtime.Version() == "go1.16.5" {
+		log.Fatal("Error: Please upgrade your Go version to 1.16.5 on your local machine.")
+	}
 }
 
 func main() {
